@@ -52,16 +52,6 @@ static bool ui_update_backlight(bool trigger)
 
         restore_current_task();
     }
-    else
-    {
-        if (span > BRIGHT_OFF_TIMEOUT_MS){
-            set_screen_led_backlight(SCREEN_BRIGHT_OFF);
-            pause_current_task();
-        }
-        else if (span > BRIGHT_MID_TIMEOUT_MS){
-            set_screen_led_backlight(SCREEN_BRIGHT_MID);
-        }
-    }
 
     /* Avoid doing action when backlight off */
     if (span > BRIGHT_OFF_TIMEOUT_MS){
