@@ -9,6 +9,10 @@ void app_main()
 
     badge_init();
     led_init();
+    
+    // start bluetooth
+    bt_init();
+    xTaskCreatePinnedToCore(bt_task, "bt_task", 4096, NULL, 6, NULL, 0);
 
     // start wifi management
     wifi_init();
