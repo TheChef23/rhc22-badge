@@ -4,8 +4,6 @@ enum screen_order {SCREEN_LOGO, SCREEN_EVENT, SCREEN_RADAR, SCREEN_RSSI,  SCREEN
 static lv_obj_t* screens[NUM_SCREENS];
 static int8_t current_screen = SCREEN_LOGO;
 
-static uint32_t last_trigger = -1;
-
 static lv_obj_t *radar_node[MAX_NEARBY_NODE] = {0};
 static lv_obj_t *radar_node_number[MAX_NEARBY_NODE] = {0};
 static lv_obj_t *table_rssi, *table_event;
@@ -43,20 +41,6 @@ void pause_current_task(){
 
 static bool ui_update_backlight(bool trigger)
 {
-    uint32_t span = lv_tick_get() - last_trigger;
-
-    if (trigger)
-    {
-        set_screen_led_backlight(SCREEN_BRIGHT_MAX);
-        last_trigger = lv_tick_get();
-
-        restore_current_task();
-    }
-
-    /* Avoid doing action when backlight off */
-    if (span > BRIGHT_OFF_TIMEOUT_MS){
-        return true;
-    }
     return false;
 }
 
