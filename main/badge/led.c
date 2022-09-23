@@ -181,23 +181,6 @@ void set_completed(){
 
 void led_task(void* arg) 
 {
-    while(1){
-        ESP_LOGI(__FILE__, "free_heap_size = %d\n", esp_get_free_heap_size());
-        bool nearby_set = check_ble_set();
-        if(nearby_set)
-        {
-            ESP_LOGI(__FILE__, "Set found");
-            set_completed();
-        } else {
-            uint8_t nearby_count = count_ble_nodes();
-            if(nearby_count > 0)
-            {
-                ESP_LOGI(__FILE__, "Badges around: %d", nearby_count);
-                flash(5000, 0xf0);
-            } else {
-                ESP_LOGI(__FILE__, "It is just me around");
-                flash(10000, 0xfa);
-            }
-        }
-    }
+    rgb_t color = rgb_from_code(MAGENTA_SAIYAN);
+    all_on(color);
 }

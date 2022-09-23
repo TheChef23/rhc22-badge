@@ -20,7 +20,12 @@
 #include "badge.h"
 #include "snake.h"
 
-#define SCREEN_BRIGHT_MAX 100
+#define SCREEN_BRIGHT_MAX 96
+#define SCREEN_BRIGHT_MID 96
+#define SCREEN_BRIGHT_OFF 0
+
+#define BRIGHT_MID_TIMEOUT_MS 5000
+#define BRIGHT_OFF_TIMEOUT_MS 1500000000
 
 #define ADMIN_STATE_OFF 0
 #define ADMIN_STATE_AP 1
